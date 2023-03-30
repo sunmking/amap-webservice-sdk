@@ -1,0 +1,23 @@
+{
+    "name": "sunmking/amap-webservice-sdk",
+    "description": "高德开放平台的 webservice api SDK for PHP",
+    "keywords": ["amap", "高德", "php","sdk","weather","geo","regeo"],
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/sunmking/amap-webservice-sdk",
+    "authors": [
+        {
+            "name": "sunmking",
+            "homepage": "https://sunmking.github.io/"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "SunmKing\\Amap\\": "src/"
+        }
+    }
+}
