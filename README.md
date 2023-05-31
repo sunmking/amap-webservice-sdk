@@ -21,7 +21,7 @@ $config = [
     'sign'=>true,
     'private_key'=>"xxxxxx",
 ]
-$weather = new \SunmKing\Amap\WebService($config);
+$weather = new \Sunmking\Amap\WebService($config);
 ```
 
 ###  获取实时天气

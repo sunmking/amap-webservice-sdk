@@ -13,12 +13,11 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "guzzlehttp/guzzle": "^7.4",
-        "ext-json": "*"
+        "guzzlehttp/guzzle": "^7.4"
     },
     "autoload": {
         "psr-4": {
-            "SunmKing\\Amap\\": "src/"
+            "Sunmking\\Amap\\": "src/"
         }
     }
 }

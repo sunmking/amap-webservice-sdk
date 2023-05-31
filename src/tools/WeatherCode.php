@@ -1,6 +1,6 @@
 <?php /** @noinspection NonAsciiCharacters */
 
-namespace SunmKing\Amap\tools;
+namespace Sunmking\Amap\tools;
 
 class WeatherCode
 {

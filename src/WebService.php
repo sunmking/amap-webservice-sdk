@@ -1,12 +1,12 @@
 <?php
 
-namespace SunmKing\Amap;
+namespace Sunmking\Amap;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
-use SunmKing\Amap\exception\InvalidConfigException;
-use SunmKing\Amap\exception\InvalidException;
+use Sunmking\Amap\exception\InvalidConfigException;
+use Sunmking\Amap\exception\InvalidException;
 
 class WebService
 {

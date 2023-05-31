@@ -1,6 +1,6 @@
 <?php
 
-namespace SunmKing\Amap\exception;
+namespace Sunmking\Amap\exception;
 
 class InvalidException extends \Exception
 {
