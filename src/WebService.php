@@ -3,6 +3,7 @@
 namespace SunmKing\Amap;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use SunmKing\Amap\exception\InvalidConfigException;
 use SunmKing\Amap\exception\InvalidException;
@@ -148,7 +149,7 @@ class WebService
     /**
      * @return Client
      */
-    public function getHttpClient()
+    public function getHttpClient(): Client
     {
         return new Client($this->guzzleOptions);
     }
@@ -164,6 +165,7 @@ class WebService
     /**
      * 地址编码
      * @throws InvalidException
+     * @throws GuzzleException
      */
     public function getGeo($address, $city='',$format = 'json')
     {
@@ -183,6 +185,7 @@ class WebService
     /**
      * 逆地址编码
      * @throws InvalidException
+     * @throws GuzzleException
      */
     public function getRegeo($params,$type="base",$format = 'json')
     {
@@ -210,7 +213,7 @@ class WebService
 
     /**
      * 步行路径规划
-     * @throws InvalidException
+     * @throws InvalidException|GuzzleException
      */
     public function walking($origin,$destination,$format = 'json')
     {
@@ -236,8 +239,9 @@ class WebService
      * @param string $format
      * @return mixed|string
      * @throws InvalidException
+     * @throws GuzzleException
      */
-    public function getLiveWeather($city, $format = 'json')
+    public function getLiveWeather($city, string $format = 'json')
     {
         return $this->getWeather($city, 'base', $format);
     }
@@ -247,8 +251,9 @@ class WebService
      * @param string $format
      * @return mixed|string
      * @throws InvalidException
+     * @throws GuzzleException
      */
-    public function getForecastsWeather($city, $format = 'json')
+    public function getForecastsWeather($city, string $format = 'json')
     {
         return $this->getWeather($city, 'all', $format);
     }
@@ -259,8 +264,9 @@ class WebService
      * @param string $format
      * @return mixed|string
      * @throws InvalidException
+     * @throws GuzzleException
      */
-    public function getWeather($city, $type = 'base', $format = '')
+    public function getWeather($city, string $type = 'base', string $format = '')
     {
         if (!\in_array(\strtolower($type), ['base', 'all'])) {
             throw new InvalidException('Invalid type value(base/all): '.$type);
@@ -302,9 +308,9 @@ class WebService
      * @param string $url
      * @param string $format
      * @return mixed
-     * @throws InvalidException
+     * @throws InvalidException|GuzzleException
      */
-    public function getRequest(array $query, $url='', $format='json')
+    public function getRequest(array $query, string $url='', string $format='json')
     {
         if (empty($url)) {
             throw new InvalidException('url property must be set');
@@ -327,7 +333,7 @@ class WebService
 
             return 'json' === $format ? \json_decode($response, true) : $response;
         } catch (\Exception $e) {
-            throw new RequestException($e->getMessage(), $e->getCode(), $e);
+            throw new RequestException($e->getMessage(), $e->getCode());
         }
     }
 }
